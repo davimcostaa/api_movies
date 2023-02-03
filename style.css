@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans:wght@400;500;600&display=swap');
+
+:root{
+    --cor-background: #17162E;
+    --cor-textos: #FFFFFF;
+    --cor-input: #8A8A8A; 
+}
+
+body {
+    font-family: 'Kumbh Sans', sans-serif;
+    background-color: var(--cor-background);
+}
+
+.titulo__principal {
+    margin-top: 1em;
+    text-align: center;
+    color: var(--cor-textos);
+    font-weight: 600;
+    font-size: 36px;
+}
+
+.inputs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#pesquisa__filme {
+    width: 30%;
+    border-radius: 10px;
+    padding: 1.3em;
+    background: var(--cor-textos);
+    opacity: 60%;
+}    
+
+#pesquisa__filme::placeholder {
+    color: var(--cor-input);
+    font-size: 13px;
+    background: url(/img/lupa.svg) no-repeat;
+    background-position: 31em;
+}
+
+.fa-solid {
+    color: var(--cor-input);
+    position: absolute;
+    top: 125px;
+    right: 520px;
+}
+
+.checkbox {
+    margin-top: 1.5em;
+}
+
+.checkbox label {
+    color: var(--cor-textos);
+    font-weight: 600;
+    font-size: 18px;
+    padding-left: 0.2em;
+}
+
+.checkbox input {
+    width: 30px;
+    border-radius: 15px;
+    background-color: var(--cor-background); 
+}
+
+
+.filme {
+    display: flex;
+}
+
+.infos {
+    display: flex;
+    
+}
