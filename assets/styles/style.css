@@ -26,6 +26,7 @@ body {
     flex-direction: column;
 }
 
+
 #pesquisa__filme {
     width: 30%;
     border-radius: 10px;
@@ -37,7 +38,7 @@ body {
 #pesquisa__filme::placeholder {
     color: var(--cor-input);
     font-size: 13px;
-    background: url(/img/lupa.svg) no-repeat;
+
     background-position: 31em;
 }
 
@@ -89,6 +90,9 @@ body {
 }
 
 .poster img {
+    height: 120px;
+    width: 120px;
+    object-fit: cover;
     margin: 1em 2em 1em 2em;
     border-radius: 50%; 
     box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);    
@@ -134,7 +138,7 @@ body {
 .sinopse {
     display: flex;
     align-items: center;
-    margin-right: 1em;
+    margin-right: 2em;
 }
 
 .sinopse__filme {
