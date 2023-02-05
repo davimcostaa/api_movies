@@ -75,7 +75,7 @@ body {
 }
 
 .filme {
-    height: 10em;
+    height: 12em;
     width: 80%;
     background-color: #1D1C3B;
     display: flex;
@@ -86,7 +86,7 @@ body {
 .infos {
     display: flex;
     align-items: center;
-    margin-right: 10em;
+    width: 55%;
 }
 
 .poster img {
@@ -106,7 +106,6 @@ body {
 
 .icones {
     display: flex;
-    justify-content: space-between;
     gap: 3em;
 }
 
@@ -138,7 +137,7 @@ body {
 .sinopse {
     display: flex;
     align-items: center;
-    margin-right: 2em;
+    width: 40%;
 }
 
 .sinopse__filme {
