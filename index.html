@@ -14,13 +14,15 @@
     <h1 class="titulo__principal">Filmes Populares</h1>
 
     <div class="inputs">
-        <input type="text" name="pesquisa__filme" id="pesquisa__filme" placeholder="Digite algum filme para pesquisar...">
-    
+        <input type="text" name="pesquisa__filme" id="pesquisa__filme" placeholder="Digite algum filme para pesquisar..." data-pesquisa>
+        <button class="pesquisar__botao" data-botao-pesquisa></button>
+
+    </div>    
         <div class="checkbox">
             <input type="checkbox" name="check__filmes" id="check__filmes">
             <label for="check__filmes">Mostrar apenas meus filmes favoritos </label>
         </div>
-    </div>
+    
 
     <section class="filmes" data-filmes>
        
@@ -29,5 +31,6 @@
 
 
     <script src="assets/js/criaFilmes.js" type="module"></script>
+    <script src="assets/js/buscaFilme.js" type="module"></script>
 </body>
 </html>

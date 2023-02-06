@@ -2,7 +2,7 @@ import { conectaApi } from "./conectaApi.js";
 
 const filmes = document.querySelector("[data-filmes]");
 
-function criaFilmes (foto, titulo, nota, descricao) {
+export default function mostraFilmes (foto, titulo, nota, descricao) {
     const filme = document.createElement('div');
     filme.classList.add('filme');
     filme.innerHTML = 
@@ -39,10 +39,9 @@ function criaFilmes (foto, titulo, nota, descricao) {
 
 async function listaFilmes() {
     const listaFilmesPopularesAPI = await conectaApi.listaFilmesPopulares();
-    const teste = listaFilmesPopularesAPI['results']
-    console.log(teste)
-    teste.forEach(elemento => filmes.appendChild(
-        criaFilmes(elemento.poster_path, elemento.original_title, elemento.vote_average.toFixed(2), elemento.overview)));    
+    const listaFilmes = listaFilmesPopularesAPI['results']
+    listaFilmes.forEach(elemento => filmes.appendChild(
+        mostraFilmes(elemento.poster_path, elemento.title, elemento.vote_average.toFixed(2), elemento.overview)));    
 }      
 
 listaFilmes()

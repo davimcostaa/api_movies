@@ -23,9 +23,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
 }
-
 
 #pesquisa__filme {
     width: 30%;
@@ -38,26 +36,32 @@ body {
 #pesquisa__filme::placeholder {
     color: var(--cor-input);
     font-size: 13px;
-
     background-position: 31em;
 }
 
-.fa-solid {
-    color: var(--cor-input);
+.pesquisar__botao { 
     position: absolute;
-    top: 125px;
-    right: 520px;
+    left: 63%;
+    background-image: url(/img/search.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    padding: 1.3em;
+    background-color: none;
+    border-radius: 10px;
+    cursor: pointer;
+    border: none;
 }
 
 .checkbox {
     margin-top: 1.5em;
+    display: flex;
+    justify-content: center;
 }
 
 .checkbox label {
     color: var(--cor-textos);
     font-weight: 600;
-    font-size: 18px;
-    
+    font-size: 18px;   
 }
 
 .checkbox input {
@@ -100,6 +104,7 @@ body {
 
 .titulo__filme {
     margin-left: 1em;
+    margin-right: 2em;
     display: flex;
     flex-direction: column;
 }
@@ -138,6 +143,7 @@ body {
     display: flex;
     align-items: center;
     width: 40%;
+    max-height: fit-content;
 }
 
 .sinopse__filme {
