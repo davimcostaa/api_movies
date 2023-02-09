@@ -4,6 +4,7 @@ const filmes = document.querySelector("[data-filmes]");
 const movies = JSON.parse(localStorage.getItem("itens")) || []
 
 export default function mostraFilmes (movie) {
+    
     const filme = document.createElement('div');
     filme.classList.add('filme');
     filme.innerHTML = 
@@ -40,7 +41,6 @@ export default function mostraFilmes (movie) {
     coracao.addEventListener('click', evento => favoriteButtonPressed(evento, movie))
 
     filmes.appendChild(filme)
-        
 }
 
 function favoriteButtonPressed(event, movie) {
@@ -61,6 +61,28 @@ function favoriteButtonPressed(event, movie) {
       removeFromLocalStorage(movie.id);
     }
   }
+  
+async function listaFilmes() {
+      const listaFilmesPopularesAPI = await conectaApi.listaFilmesPopulares();
+      const listaFilmes = listaFilmesPopularesAPI['results']
+      listaFilmes.forEach(movie => mostraFilmes(movie))
+  }   
+
+
+function checkMovieIsFavorited(id) {
+    return movies.find(movie => movie.id == id)
+  }  
+
+
+function saveToLocalStorage(movie) {
+    
+
+    movies.push(movie)
+
+    const moviesJSON = JSON.stringify(movies)
+    localStorage.setItem('favoriteMovies', moviesJSON)
+
+}
 
 function removeFromLocalStorage(id) {
     const findMovie = movies.find(movie => movie.id == id)
@@ -68,20 +90,8 @@ function removeFromLocalStorage(id) {
     localStorage.setItem('favoriteMovies', JSON.stringify(newMovies))
 }
 
-async function listaFilmes() {
-    const listaFilmesPopularesAPI = await conectaApi.listaFilmesPopulares();
-    const listaFilmes = listaFilmesPopularesAPI['results']
-    listaFilmes.forEach(movie => mostraFilmes(movie))
-}   
-   
-function saveToLocalStorage(movie) {
-    movies.push(movie)
-
-    const moviesJSON = JSON.stringify(movies)
-    localStorage.setItem('favoriteMovies', moviesJSON)
-}
-
 listaFilmes()
+
 
 
 

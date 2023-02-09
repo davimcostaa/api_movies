@@ -79,7 +79,7 @@ body {
 }
 
 .filme {
-    height: 12em;
+    height: auto;
     width: 80%;
     background-color: #1D1C3B;
     display: flex;
