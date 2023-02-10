@@ -1,5 +1,6 @@
 import mostraFilmes from "./criaFilmes.js";
 import { conectaApi } from "./conectaApi.js";
+import { movies } from "./criaFilmes.js";
 
 const check = document.querySelector('[data-check]');
 const favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies'));
@@ -12,12 +13,9 @@ check.addEventListener('change', function() {
             filmes.innerHTML = ''
         }
 
-         favoriteMovies.forEach(movie => mostraFilmes(movie))
+         movies.forEach(movie => mostraFilmes(movie))
 
-         document.querySelectorAll('[data-coracao]').forEach(item => {
-            item.setAttribute('src', 'img/heart-fill.svg')
-          })
-        
+         
     } else {
         while (filmes.firstChild) {
             filmes.innerHTML = ''
@@ -28,8 +26,8 @@ check.addEventListener('change', function() {
 });
 
 async function getAllPopularMovies() {
-    const movies = await conectaApi.listaFilmesPopulares()
-    const listaFilmes = movies['results']
+    const favoritemovies = await conectaApi.listaFilmesPopulares()
+    const listaFilmes = favoritemovies['results']
     listaFilmes.forEach(movie => mostraFilmes(movie))
   }
 

@@ -1,10 +1,11 @@
 import { conectaApi } from "./conectaApi.js";
 
 const filmes = document.querySelector("[data-filmes]");
-const movies = JSON.parse(localStorage.getItem("itens")) || []
+export let movies = JSON.parse(localStorage.getItem("favoriteMovies")) || []
 
 export default function mostraFilmes (movie) {
-    
+    const isFavorited = checkMovieIsFavorited(movie.id)
+    //console.log(movie.id)
     const filme = document.createElement('div');
     filme.classList.add('filme');
     filme.innerHTML = 
@@ -16,7 +17,7 @@ export default function mostraFilmes (movie) {
 
             <div class="titulo__filme">
 
-                <h2>${movie.original_title}</h2>
+                <h2>${movie.title}</h2>
 
                 <div class="icones">
                     <div class="estrela">
@@ -36,9 +37,12 @@ export default function mostraFilmes (movie) {
             <p class="sinopse__filme" data-paragrafo>${movie.overview}</p>
         </div>
     `
+    
+    const icon = filme.querySelector("[data-coracao]")
+    icon.src = isFavorited ? 'img/heart-fill.svg' : 'img/Heart.svg'
 
     const coracao = filme.querySelector('#coracao')
-    coracao.addEventListener('click', evento => favoriteButtonPressed(evento, movie))
+    coracao.addEventListener('click', (e) => favoriteButtonPressed(e, movie))
 
     filmes.appendChild(filme)
 }
@@ -49,18 +53,22 @@ function favoriteButtonPressed(event, movie) {
       favorited: 'img/heart-fill.svg',
       notFavorited: 'img/Heart.svg'
     }
-  
+    
     if(event.target.src.includes(favoriteState.notFavorited)) {
+        //console.log(event.target.parentNode)
       // aqui ele será favoritado
+      console.log(movie)
       event.target.src = favoriteState.favorited
       saveToLocalStorage(movie)
       
     } else {
+        
       // aqui ele será desfavoritado
       event.target.src = favoriteState.notFavorited
       removeFromLocalStorage(movie.id);
     }
   }
+
   
 async function listaFilmes() {
       const listaFilmesPopularesAPI = await conectaApi.listaFilmesPopulares();
@@ -75,19 +83,19 @@ function checkMovieIsFavorited(id) {
 
 
 function saveToLocalStorage(movie) {
-    
-
     movies.push(movie)
-
     const moviesJSON = JSON.stringify(movies)
     localStorage.setItem('favoriteMovies', moviesJSON)
-
+    console.log(movies)
 }
+
 
 function removeFromLocalStorage(id) {
     const findMovie = movies.find(movie => movie.id == id)
     const newMovies = movies.filter(movie => movie.id != findMovie.id)
+    movies = newMovies
     localStorage.setItem('favoriteMovies', JSON.stringify(newMovies))
+    
 }
 
 listaFilmes()
