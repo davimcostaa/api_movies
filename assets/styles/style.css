@@ -42,7 +42,7 @@ body {
 .pesquisar__botao { 
     position: absolute;
     left: 63%;
-    background-color: transparent;
+    background: transparent;
     background-image: url(/img/search.png);
     background-repeat: no-repeat;
     background-position: center;
@@ -151,4 +151,54 @@ body {
     color: #8A8A8A;
     font-size: 15px;
     font-weight: 500;
+} 
+
+.btn-favorite_movie {
+    background-color: #8A8A8A;
+    cursor: pointer;
+    padding: 1em;
+   
+}
+
+.erro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 70%;
+    
+}
+
+.erro h2 {
+    text-align: center;
+    color: #FFFFFF;
+}
+
+
+@media (max-width: 400px) {
+  .filme {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+   }
+
+   .infos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+   }
+
+   .titulo__filme h2{
+    text-align: center;
+   }
+
+   .icones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5em;
+}
+   
 }

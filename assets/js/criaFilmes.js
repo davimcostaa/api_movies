@@ -4,10 +4,13 @@ const filmes = document.querySelector("[data-filmes]");
 export let movies = JSON.parse(localStorage.getItem("favoriteMovies")) || []
 
 export default function mostraFilmes (movie) {
-    const isFavorited = checkMovieIsFavorited(movie.id)
-    //console.log(movie.id)
+    const checaFavorito = checkMovieIsFavorited(movie.id)
+    const lancamento = new Date(movie.release_date)
+    const anoLancamento = lancamento.getFullYear()
+    console.log(anoLancamento)
     const filme = document.createElement('div');
     filme.classList.add('filme');
+    
     filme.innerHTML = 
     `
         <div class="infos">
@@ -17,7 +20,7 @@ export default function mostraFilmes (movie) {
 
             <div class="titulo__filme">
 
-                <h2>${movie.title}</h2>
+                <h2>${movie.title} (${anoLancamento})</h2>
 
                 <div class="icones">
                     <div class="estrela">
@@ -39,12 +42,13 @@ export default function mostraFilmes (movie) {
     `
     
     const icon = filme.querySelector("[data-coracao]")
-    icon.src = isFavorited ? 'img/heart-fill.svg' : 'img/Heart.svg'
+    icon.src = checaFavorito ? 'img/heart-fill.svg' : 'img/Heart.svg'
 
     const coracao = filme.querySelector('#coracao')
     coracao.addEventListener('click', (e) => favoriteButtonPressed(e, movie))
 
     filmes.appendChild(filme)
+
 }
 
 function favoriteButtonPressed(event, movie) {

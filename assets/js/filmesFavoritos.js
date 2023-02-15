@@ -3,7 +3,6 @@ import { conectaApi } from "./conectaApi.js";
 import { movies } from "./criaFilmes.js";
 
 const check = document.querySelector('[data-check]');
-const favoriteMovies = JSON.parse(localStorage.getItem('favoriteMovies'));
 const filmes = document.querySelector("[data-filmes]");
 
 check.addEventListener('change', function() {
