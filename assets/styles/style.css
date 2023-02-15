@@ -126,6 +126,10 @@ body {
     gap: 0.5em; 
 }
 
+.coracao:hover {
+    cursor: pointer;
+}
+
 .titulo__filme h2{
     display: flex;
     color: white;

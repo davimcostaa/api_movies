@@ -4,6 +4,7 @@ import { movies } from "./criaFilmes.js";
 
 const check = document.querySelector('[data-check]');
 const filmes = document.querySelector("[data-filmes]");
+const tituloPrincipal = document.querySelector(".titulo__principal")
 
 check.addEventListener('change', function() {
     if(check.checked) {
@@ -12,6 +13,7 @@ check.addEventListener('change', function() {
             filmes.innerHTML = ''
         }
 
+        tituloPrincipal.innerText = 'Filmes Favoritos'
          movies.forEach(movie => mostraFilmes(movie))
 
          
@@ -20,6 +22,7 @@ check.addEventListener('change', function() {
             filmes.innerHTML = ''
         }
 
+        tituloPrincipal.innerText = 'Filmes Populares'
         pegarFilmesPopulares()
     }
 });
