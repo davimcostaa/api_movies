@@ -70,6 +70,7 @@ function favoriteButtonPressed(event, movie) {
       // aqui ele será desfavoritado
       event.target.src = favoriteState.notFavorited
       removeFromLocalStorage(movie.id);
+      
     }
   }
 

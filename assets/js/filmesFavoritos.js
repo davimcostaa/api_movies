@@ -20,11 +20,11 @@ check.addEventListener('change', function() {
             filmes.innerHTML = ''
         }
 
-        getAllPopularMovies()
+        pegarFilmesPopulares()
     }
 });
 
-async function getAllPopularMovies() {
+async function pegarFilmesPopulares() {
     const favoritemovies = await conectaApi.listaFilmesPopulares()
     const listaFilmes = favoritemovies['results']
     listaFilmes.forEach(movie => mostraFilmes(movie))
