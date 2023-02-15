@@ -2,6 +2,8 @@ import { conectaApi } from "./conectaApi.js";
 import mostraFilmes from "./criaFilmes.js";
 
 const pesquisaFilme = document.querySelector('[data-pesquisa]')
+const btnPesquisa = document.querySelector('[data-botao-pesquisa]')
+const check = document.querySelector('[data-check]')
 
 async function buscarFilme(evento) {
     evento.preventDefault()
@@ -33,15 +35,17 @@ async function buscarFilme(evento) {
 
 }  
 
-const btnPesquisa = document.querySelector('[data-botao-pesquisa]')
 
-btnPesquisa.addEventListener('click', async (evento) => {
+btnPesquisa.addEventListener('click', (evento) => {
     buscarFilme(evento) 
 
+    check.checked = false
 }) 
 
 pesquisaFilme.addEventListener('keypress', (evento) => {
     if (evento.key === 'Enter') {
         buscarFilme(evento)
     }
+
+    check.checked = false
 })
